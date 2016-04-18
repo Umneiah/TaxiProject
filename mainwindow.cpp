@@ -8,7 +8,23 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->setupUi(this);
     initial();
 }
-
+void MainWindow::DrawPath(vector<node *> path)
+{
+    QPixmap pixmap;
+    QPen pen(Qt::red);
+    pen.setWidth(10);
+    pixmap.load(QString::fromUtf8("/home/mahmoudhablas/map.jpg")); //path of image
+     QPainter painter(&pixmap);
+     painter.setPen(pen);
+    for(vector<node *>::iterator i=path.begin();(i+1)!=path.end();i++)
+    {
+       ui->label->setPixmap(pixmap);
+         ui->label->show();
+          QLine l;
+          l.setLine((*i)->getX(),(*i)->getY(),(*(i+1))->getX(),(*(i+1))->getY());
+          painter.drawLine(l);
+    }
+}
 MainWindow::~MainWindow()
 {
     delete ui;
