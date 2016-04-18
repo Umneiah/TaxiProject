@@ -105,6 +105,10 @@ return nodeList[i];
 }
 return NULL;
 }
+vector<node *> getVec()
+{
+    return nodeList;
+}
 };
 
 #endif // GRAPH_H
