@@ -7,6 +7,7 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
     initial();
+    DrawPath(map.getVec());
 }
 void MainWindow::DrawCar(node * car)
 {
@@ -30,7 +31,7 @@ void MainWindow::DrawPath(vector<node *> path)
     QPixmap pixmap;
     QPen pen(Qt::red);
     pen.setWidth(10);
-    pixmap.load(QString::fromUtf8("/home/mahmoudhablas/map.jpg")); //path of image
+    pixmap.load(QString::fromUtf8("/home/mostafa/map.jpg")); //path of image
      QPainter painter(&pixmap);
      painter.setPen(pen);
     for(vector<node *>::iterator i=path.begin();(i+1)!=path.end();i++)
