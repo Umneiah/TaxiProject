@@ -21,6 +21,7 @@ public:
     void initial();
     void initial();
     void DrawPath(vector<node *>path);
+    void DrawCar(node * car);
 
 private:
     Ui::MainWindow *ui;
