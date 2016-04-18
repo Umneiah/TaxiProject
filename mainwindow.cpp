@@ -8,6 +8,23 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->setupUi(this);
     initial();
 }
+void MainWindow::DrawCar(node * car)
+{
+    QPixmap map;
+    QPen pen(Qt::red);
+    pen.setWidth(20);
+    map.load(QString::fromUtf8("/home/mostafa/map.jpg"));
+     QPainter painter(&map);
+     painter.setPen(pen);
+     QPoint p;
+     int x = car->getX();
+     int y = car->getY();
+     p.setX(x);
+     p.setY(y);
+     painter.drawPoint(p);
+     ui->MapLbl->setPixmap(map);
+     ui->MapLbl->show();
+}
 void MainWindow::DrawPath(vector<node *> path)
 {
     QPixmap pixmap;
