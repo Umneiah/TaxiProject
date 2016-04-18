@@ -75,6 +75,14 @@ public:
     {
         return adjnodes;
     }
+    int getX()
+    {
+       return x;
+    }
+    int getY()
+    {
+       return y;
+    }
 
 };
 class graph
