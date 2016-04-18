@@ -3,6 +3,10 @@
 
 #include <QMainWindow>
 #include <graph.h>
+#include <QtCore>
+#include <QtGui>
+#include <QPainter>
+#include <graph.h>
 namespace Ui {
 class MainWindow;
 }
@@ -15,6 +19,8 @@ public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
     void initial();
+    void initial();
+    void DrawPath(vector<node *>path);
 
 private:
     Ui::MainWindow *ui;
