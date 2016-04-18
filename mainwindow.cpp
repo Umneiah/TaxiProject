@@ -36,7 +36,7 @@ void MainWindow::initial()
        node *b = new node("2",43,255);
        map.addNewNode(b);
        node *c = new node("3",65,365);
-       map.addNewNode(a);
+       map.addNewNode(c);
        node *n = new node("4",90,479);
        map.addNewNode(n);
        node *m = new node("5",113,591);
