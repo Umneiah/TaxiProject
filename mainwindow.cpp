@@ -35,8 +35,8 @@ void MainWindow::DrawPath(vector<node *> path)
      painter.setPen(pen);
     for(vector<node *>::iterator i=path.begin();(i+1)!=path.end();i++)
     {
-       ui->label->setPixmap(pixmap);
-         ui->label->show();
+       ui->MapLbl->setPixmap(pixmap);
+         ui->MapLbl->show();
           QLine l;
           l.setLine((*i)->getX(),(*i)->getY(),(*(i+1))->getX(),(*(i+1))->getY());
           painter.drawLine(l);
