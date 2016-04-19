@@ -63,6 +63,7 @@ class Node
 private:
 	string name;
 	unsigned value;
+	int x,y;
 	vector<Edge> adjNodeList;//list of outgoing edges for this vertex
 	Node* previous;
 	enum Status status;//used in dfs to mark the node visited
@@ -79,7 +80,14 @@ Node(string id)
 {
 	adjNodeList.clear();
 }
-
+int getX()
+{
+	return x;
+}
+int getY()
+{
+	return y;
+}
 enum Status getStatus()
 {
 	return status;
@@ -130,6 +138,8 @@ vector<Edge>& getAdjNodeList()
 }
 
 //displays all adjacent verticies of this vertex
+
+/*
 void displayList()
 {
 	string edgeOp = " -> " ;
@@ -140,6 +150,7 @@ void displayList()
 	}
 
 }
+*/
 };
 
 //An object of class graph holds a directed graph
