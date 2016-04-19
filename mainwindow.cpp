@@ -7,7 +7,8 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
     initial();
-    DrawPath(map.getVec());
+    //DrawPath(map.getVec());
+    //DrawCar(map.findNodeByName("53"));
 }
 void MainWindow::DrawCar(node * car)
 {
@@ -49,7 +50,9 @@ MainWindow::~MainWindow()
 }
 void MainWindow::initial()
 {
-    node *a = new node("1",19,142);
+       node *f = new node("0",61,722);
+       map.addNewNode(f);
+       node *a = new node("1",19,142);
        map.addNewNode(a);
        node *b = new node("2",43,255);
        map.addNewNode(b);
@@ -59,6 +62,8 @@ void MainWindow::initial()
        map.addNewNode(n);
        node *m = new node("5",113,591);
        map.addNewNode(m);
+       node *d = new node("6",140,704);
+       map.addNewNode(d);
        node *z = new node("7",97,124);
        map.addNewNode(z);
        node *q = new node("8",121,236);
@@ -95,6 +100,8 @@ void MainWindow::initial()
        map.addNewNode(Y);
        node *U = new node("24",376,654);
        map.addNewNode(U);
+       node *g = new node("25",400,765);
+       map.addNewNode(g);
        node *O = new node("26",334,73);
        map.addNewNode(O);
        node *I = new node("27",359,185);
@@ -107,6 +114,8 @@ void MainWindow::initial()
        map.addNewNode(J);
        node *L = new node("31",455,637);
        map.addNewNode(L);
+       node *SSS = new node("32",479,748);
+       map.addNewNode(SSS);
        node *G = new node("33",413,55);
        map.addNewNode(G);
        node *D = new node("34",437,169);
@@ -119,6 +128,8 @@ void MainWindow::initial()
        map.addNewNode(QQ);
        node *WW = new node("38",535,621);
        map.addNewNode(WW);
+       node *DDD = new node("39",559,732);
+       map.addNewNode(DDD);
        node *RR = new node("40",493,39);
        map.addNewNode(RR);
        node *FF = new node("41",516,152);
@@ -131,6 +142,8 @@ void MainWindow::initial()
        map.addNewNode(PP);
        node *NN = new node("45",612,601);
        map.addNewNode(NN);
+       node *FFF = new node("46",637,714);
+       map.addNewNode(FFF);
        node *VV = new node("47",572,23);
        map.addNewNode(VV);
        node *qq = new node("48",594,134);
@@ -143,6 +156,8 @@ void MainWindow::initial()
        map.addNewNode(as);
        node *yu = new node("52",692,585);
        map.addNewNode(yu);
+       node *QQQ = new node("53",714,697);
+       map.addNewNode(QQQ);
        node *aq = new node("54",674,115);
        map.addNewNode(aq);
        node *tr = new node("55",698,230);
@@ -167,7 +182,7 @@ void MainWindow::initial()
        m->addAdjnodes(wc,10);
        m->addAdjnodes(r,10);
        m->addAdjnodes(n,15);
-       //m->6
+       m->addAdjnodes(d,10);
        z->addAdjnodes(u,10);
        z->addAdjnodes(a,10);
        z->addAdjnodes(q,15);
@@ -229,6 +244,7 @@ void MainWindow::initial()
        U->addAdjnodes(L,10);
        U->addAdjnodes(S,10);
        U->addAdjnodes(Y,15);
+       U->addAdjnodes(g,15);
        O->addAdjnodes(G,10);
        O->addAdjnodes(I,15);
        O->addAdjnodes(Q,10);
@@ -251,7 +267,7 @@ void MainWindow::initial()
        L->addAdjnodes(WW,10);
        L->addAdjnodes(J,15);
        L->addAdjnodes(U,10);
-       //32
+       L->addAdjnodes(SSS,15);
        G->addAdjnodes(RR,10);
        G->addAdjnodes(O,10);
        G->addAdjnodes(D,15);
@@ -274,6 +290,7 @@ void MainWindow::initial()
        WW->addAdjnodes(NN,10);
        WW->addAdjnodes(QQ,15);
        WW->addAdjnodes(L,10);
+       WW->addAdjnodes(DDD,15);
        RR->addAdjnodes(FF,15);
        RR->addAdjnodes(G,10);
        RR->addAdjnodes(VV,10);
@@ -296,6 +313,7 @@ void MainWindow::initial()
        NN->addAdjnodes(yu,10);
        NN->addAdjnodes(WW,10);
        NN->addAdjnodes(PP,15);
+       NN->addAdjnodes(FFF,15);
        VV->addAdjnodes(qq,15);
        VV->addAdjnodes(RR,10);
        qq->addAdjnodes(oo,15);
@@ -315,6 +333,7 @@ void MainWindow::initial()
        as->addAdjnodes(ff,15);
        as->addAdjnodes(er,10);
        yu->addAdjnodes(NN,10);
+       yu->addAdjnodes(QQQ,15);
        aq->addAdjnodes(tr,15);
        aq->addAdjnodes(qq,10);
        tr->addAdjnodes(br,15);
@@ -322,5 +341,6 @@ void MainWindow::initial()
        br->addAdjnodes(ff,10);
        br->addAdjnodes(er,15);
        wc->addAdjnodes(m,10);
+       wc->addAdjnodes(f,15);
 }
 
