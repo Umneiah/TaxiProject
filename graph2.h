@@ -199,6 +199,7 @@ public:
 }
 
 
+/*
 void displayGraph()
 {
 	for(int i=0 ; i < nodeList.size() ; i++)
@@ -206,6 +207,7 @@ void displayGraph()
 		nodeList[i]->displayList();
 	}
 }
+*/
 
 list<Node*>::iterator findMin( list<Node*>::iterator first, list<Node*>::iterator last )
 {
@@ -320,6 +322,10 @@ list<Node*> Destination(string dst,list<Node*> shortestPaths)
 			return shortestPath;
 		}
 	}
+}
+vector<node *>getVec()
+{
+	return nodeList;
 }
 
 };
