@@ -37,13 +37,16 @@ void MainWindow::DrawPath(list<node *> path)
      painter.setPen(pen);
     for(list<node *>::iterator i=path.begin();i!=path.end();i++)
     {
+        list<node*>::iterator temp =i;
+        temp++;
         if(i!=path.end())
         {
-       ui->MapLbl->setPixmap(pixmap);
-         ui->MapLbl->show();
           QLine l;
-          l.setLine((*i)->getX(),(*i)->getY(),(*(i+1))->getX(),(*(i+1))->getY());
+          l.setLine((*i)->getX(),(*i)->getY(),(*(temp))->getX(),(*(temp))->getY());
           painter.drawLine(l);
+           ui->MapLbl->setPixmap(pixmap);
+         ui->MapLbl->show();
+        } 
     }
 }
 MainWindow::~MainWindow()
