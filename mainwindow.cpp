@@ -216,9 +216,9 @@ void MainWindow::initial()
        p->addAdjnodes(i,15);
        p->addAdjnodes(q,10);
        p->addAdjnodes(u,15);
-       i->addAdjnodes(Q,10);
+       i->addAdjnodes(w,10);
        i->addAdjnodes(R,10);
-       i->addAdjnodes(x,10);
+       i->addAdjnodes(x,15);
        i->addAdjnodes(p,15);
        x->addAdjnodes(T,10);
        x->addAdjnodes(e,10);
