@@ -27,7 +27,7 @@ void MainWindow::DrawCar(node * car)
      ui->MapLbl->setPixmap(map);
      ui->MapLbl->show();
 }
-void MainWindow::DrawPath(vector<node *> path)
+void MainWindow::DrawPath(list<node *> path)
 {
     QPixmap pixmap;
     QPen pen(Qt::red);
@@ -35,8 +35,10 @@ void MainWindow::DrawPath(vector<node *> path)
     pixmap.load(QString::fromUtf8("/home/mostafa/map.jpg")); //path of image
      QPainter painter(&pixmap);
      painter.setPen(pen);
-    for(vector<node *>::iterator i=path.begin();(i+1)!=path.end();i++)
+    for(list<node *>::iterator i=path.begin();i!=path.end();i++)
     {
+        if(i!=path.end())
+        {
        ui->MapLbl->setPixmap(pixmap);
          ui->MapLbl->show();
           QLine l;
