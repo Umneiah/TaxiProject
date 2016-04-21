@@ -36,18 +36,17 @@ void MainWindow::DrawPath(list<node *> path)
     pixmap.load(QString::fromUtf8("/home/mostafa/map.jpg")); //path of image
      QPainter painter(&pixmap);
      painter.setPen(pen);
-    for(list<node *>::iterator i=path.begin();i!=path.end();i++)
+     list<node *>::iterator g=path.end();
+     g--;
+    for(list<node *>::iterator i=path.begin();i!=g;i++)
     {
         list<node*>::iterator temp =i;
         temp++;
-        if(i!=path.end())
-        {
           QLine l;
           l.setLine((*i)->getX(),(*i)->getY(),(*(temp))->getX(),(*(temp))->getY());
           painter.drawLine(l);
            ui->MapLbl->setPixmap(pixmap);
          ui->MapLbl->show();
-        } 
     }
 }
 MainWindow::~MainWindow()
