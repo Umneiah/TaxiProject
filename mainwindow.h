@@ -20,6 +20,7 @@ public:
     void initial();
     void DrawPath(list<node *>path);
     void DrawCar(node * car);
+    void trial();
 
 private:
     Ui::MainWindow *ui;

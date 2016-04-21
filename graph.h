@@ -154,6 +154,7 @@ class graph
 {
 private:
    vector<node*> nodeList;//list of verticies
+   list<node*>CarList;
    bool foundCycle;//true if a cycle is found, false otherwise
    int desiredCycSize;
 
@@ -171,7 +172,6 @@ void addNewNode(node *nNode)
 {
    nodeList.push_back(nNode);
 }
-
 node* findNodeByName(string name)
 {
    for(int i = 0 ; i < nodeList.size() ; i++)
@@ -181,11 +181,16 @@ node* findNodeByName(string name)
    }
    return NULL;
 }
+void AddCarList(string s)
+{
+    node* n =findNodeByName(s);
+    CarList.push_back(n);
+}
 
-   graph()
-   {
-       foundCycle = false;
-   }
+graph()
+{
+   foundCycle = false;
+}
 
 ~graph()
 {
@@ -324,4 +329,48 @@ vector<node *>getVec()
 {
    return nodeList;
 }
+int GetPathLength(list<node*> req)
+{
+    list<node*>::iterator i,k;
+    vector<edge> edg;
+    vector<edge>::iterator kk;
+    int total = 0;
+    for (i = req.begin();i!=req.end();++i)
+    {
+        k = i;
+        k++;
+        edg = (*i)->getAdjNodeList();
+        for(kk=edg.begin();kk!=edg.end();++kk)
+        {
+            if(kk->getDstNode() == *k)
+            {
+                total += kk->getCost();
+                goto opt;
+            }
+        }
+        opt:;
+    }
+    return total;
+}
+
+list<node*> NearestCar(string start)
+{
+    string name;
+    list<node*>::iterator i;
+    list<node*>temp;
+    string star = (*CarList.begin())->getName();
+    int smallest = GetPathLength(Destination((*CarList.begin())->getName(),oneSourceAllDestination(start)));
+    for(i=CarList.begin();i!=CarList.end();++i)
+    {
+        name = (*i)->getName();
+        temp = Destination(name,oneSourceAllDestination(start));
+        if (smallest > GetPathLength(temp))
+        {
+            smallest = GetPathLength(temp);
+            star = (*i)->getName();
+        }
+    }
+    return Destination(star,oneSourceAllDestination(start));
+}
+
 };

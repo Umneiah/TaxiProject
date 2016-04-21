@@ -8,8 +8,9 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->setupUi(this);
     initial();
     //DrawPath(map.getVec());
-    DrawPath(map.Destination("5",map.oneSourceAllDestination("3")));
-    //DrawCar(map.findNodeByName("53"));
+    DrawPath(map.Destination("2",map.oneSourceAllDestination("32")));
+    //DrawCar(map.findNodeByName("2"));
+    //trial();
 }
 void MainWindow::DrawCar(node * car)
 {
@@ -27,6 +28,22 @@ void MainWindow::DrawCar(node * car)
      painter.drawPoint(p);
      ui->MapLbl->setPixmap(map);
      ui->MapLbl->show();
+}
+
+void MainWindow::trial()
+{
+    map.AddCarList("37");
+    DrawCar(map.findNodeByName("37"));
+    map.AddCarList("3");
+    DrawCar(map.findNodeByName("3"));
+    map.AddCarList("12");
+    DrawCar(map.findNodeByName("12"));
+    map.AddCarList("8");
+    DrawCar(map.findNodeByName("8"));
+    map.AddCarList("40");
+    DrawCar(map.findNodeByName("40"));
+    list<node*> hah = map.NearestCar("5");
+    DrawPath(hah);
 }
 void MainWindow::DrawPath(list<node *> path)
 {
@@ -282,7 +299,7 @@ void MainWindow::initial()
        F->addAdjnodes(J,15);
        F->addAdjnodes(EE,10);
        F->addAdjnodes(T,10);
-       F->addAdjnodes(O,15);
+       F->addAdjnodes(M,15);
        J->addAdjnodes(L,15);
        J->addAdjnodes(QQ,10);
        J->addAdjnodes(Y,10);

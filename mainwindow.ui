@@ -7,50 +7,88 @@
     <x>0</x>
     <y>0</y>
     <width>1000</width>
-    <height>1000</height>
+    <height>1500</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Taxi Reservation System</string>
   </property>
   <widget class="QWidget" name="centralWidget">
-   <layout class="QGridLayout" name="gridLayout_2">
-    <item row="0" column="0">
-     <widget class="QScrollArea" name="scrollArea">
-      <property name="widgetResizable">
+   <widget class="QScrollArea" name="scrollArea">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>1000</width>
+      <height>730</height>
+     </rect>
+    </property>
+    <property name="widgetResizable">
+     <bool>false</bool>
+    </property>
+    <widget class="QWidget" name="scrollAreaWidgetContents">
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>0</y>
+       <width>957</width>
+       <height>819</height>
+      </rect>
+     </property>
+     <widget class="QLabel" name="MapLbl">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>769</width>
+        <height>769</height>
+       </rect>
+      </property>
+      <property name="mouseTracking">
        <bool>true</bool>
       </property>
-      <widget class="QWidget" name="scrollAreaWidgetContents">
-       <property name="geometry">
-        <rect>
-         <x>0</x>
-         <y>0</y>
-         <width>980</width>
-         <height>920</height>
-        </rect>
-       </property>
-       <layout class="QGridLayout" name="gridLayout">
-        <item row="0" column="0">
-         <widget class="QLabel" name="MapLbl">
-          <property name="mouseTracking">
-           <bool>true</bool>
-          </property>
-          <property name="frameShape">
-           <enum>QFrame::NoFrame</enum>
-          </property>
-          <property name="text">
-           <string/>
-          </property>
-          <property name="pixmap">
-           <pixmap>../../map.jpg</pixmap>
-          </property>
-         </widget>
-        </item>
-       </layout>
-      </widget>
+      <property name="frameShape">
+       <enum>QFrame::NoFrame</enum>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="pixmap">
+       <pixmap>../../map.jpg</pixmap>
+      </property>
      </widget>
-    </item>
-   </layout>
+     <widget class="QPushButton" name="pushButton">
+      <property name="geometry">
+       <rect>
+        <x>820</x>
+        <y>190</y>
+        <width>97</width>
+        <height>26</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>PushButton</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton_2">
+      <property name="geometry">
+       <rect>
+        <x>810</x>
+        <y>460</y>
+        <width>97</width>
+        <height>26</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>PushButton</string>
+      </property>
+     </widget>
+     <zorder>MapLbl</zorder>
+     <zorder>gridLayoutWidget</zorder>
+     <zorder>pushButton</zorder>
+     <zorder>pushButton_2</zorder>
+    </widget>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menuBar">
    <property name="geometry">
