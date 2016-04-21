@@ -7,7 +7,7 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
     initial();
-    //DrawPath(map.getVec());
+    DrawPath(map.getVec());
     //DrawCar(map.findNodeByName("53"));
 }
 void MainWindow::DrawCar(node * car)
