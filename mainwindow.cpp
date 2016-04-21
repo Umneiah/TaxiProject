@@ -27,7 +27,7 @@ void MainWindow::DrawCar(node * car)
      ui->MapLbl->setPixmap(map);
      ui->MapLbl->show();
 }
-void MainWindow::DrawPath(vector<node *> path)
+void MainWindow::DrawPath(list<node *> path)
 {
     QPixmap pixmap;
     QPen pen(Qt::red);
@@ -35,13 +35,18 @@ void MainWindow::DrawPath(vector<node *> path)
     pixmap.load(QString::fromUtf8("/home/mostafa/map.jpg")); //path of image
      QPainter painter(&pixmap);
      painter.setPen(pen);
-    for(vector<node *>::iterator i=path.begin();(i+1)!=path.end();i++)
+    for(list<node *>::iterator i=path.begin();i!=path.end();i++)
     {
-       ui->MapLbl->setPixmap(pixmap);
-         ui->MapLbl->show();
+        list<node*>::iterator temp =i;
+        temp++;
+        if(i!=path.end())
+        {
           QLine l;
-          l.setLine((*i)->getX(),(*i)->getY(),(*(i+1))->getX(),(*(i+1))->getY());
+          l.setLine((*i)->getX(),(*i)->getY(),(*(temp))->getX(),(*(temp))->getY());
           painter.drawLine(l);
+           ui->MapLbl->setPixmap(pixmap);
+         ui->MapLbl->show();
+        } 
     }
 }
 MainWindow::~MainWindow()
@@ -211,9 +216,9 @@ void MainWindow::initial()
        p->addAdjnodes(i,15);
        p->addAdjnodes(q,10);
        p->addAdjnodes(u,15);
-       i->addAdjnodes(Q,10);
+       i->addAdjnodes(w,10);
        i->addAdjnodes(R,10);
-       i->addAdjnodes(x,10);
+       i->addAdjnodes(x,15);
        i->addAdjnodes(p,15);
        x->addAdjnodes(T,10);
        x->addAdjnodes(e,10);

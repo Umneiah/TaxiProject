@@ -19,7 +19,7 @@ public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
     void initial();
-    void DrawPath(vector<node *>path);
+    void DrawPath(list<node *>path);
     void DrawCar(node * car);
 
 private:
