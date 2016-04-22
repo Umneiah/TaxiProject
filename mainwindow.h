@@ -6,6 +6,9 @@
 #include <QtCore>
 #include <QtGui>
 #include <QPainter>
+#include <QRectF>
+#include <QColor>
+#include <QString>
 namespace Ui {
 class MainWindow;
 }
