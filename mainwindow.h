@@ -23,6 +23,7 @@ public:
     void initial();
     void DrawPath(list<node *>path);
     void DrawCar();
+    void DrawText(vector<node *> nodeList);
     void trial();
 
 private:
