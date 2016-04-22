@@ -7,18 +7,17 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
     initial();
-    //DrawPath(map.getVec());
+    pixmap.load(QString::fromUtf8("C:/map.jpg"));//path of image
     DrawPath(map.Destination("2",map.oneSourceAllDestination("32")));
-    //DrawCar(map.findNodeByName("2"));
+    DrawCar(map.findNodeByName("47"));
     //trial();
 }
 void MainWindow::DrawCar(node * car)
 {
-    QPixmap map;
+
     QPen pen(Qt::red);
     pen.setWidth(20);
-    map.load(QString::fromUtf8("/home/mostafa/map.jpg"));
-     QPainter painter(&map);
+     QPainter painter(&pixmap);
      painter.setPen(pen);
      QPoint p;
      int x = car->getX();
@@ -26,7 +25,7 @@ void MainWindow::DrawCar(node * car)
      p.setX(x);
      p.setY(y);
      painter.drawPoint(p);
-     ui->MapLbl->setPixmap(map);
+     ui->MapLbl->setPixmap(pixmap);
      ui->MapLbl->show();
 }
 
@@ -47,10 +46,8 @@ void MainWindow::trial()
 }
 void MainWindow::DrawPath(list<node *> path)
 {
-    QPixmap pixmap;
     QPen pen(Qt::red);
     pen.setWidth(10);
-    pixmap.load(QString::fromUtf8("/home/mostafa/map.jpg")); //path of image
      QPainter painter(&pixmap);
      painter.setPen(pen);
      list<node *>::iterator g=path.end();
