@@ -34,9 +34,7 @@ void MainWindow::DrawCar()
 
 void MainWindow::DrawText(vector<node*> nodeList)
 {
-     QPixmap map;
-     map.load(QString::fromUtf8("/home/mostafa/map.jpg"));
-     QPainter paint(&map);
+     QPainter paint(&pixmap);
      for(vector< node *>::iterator ii= nodeList.begin(); ii != nodeList.end(); ii++)
      {
          int x = (*ii)->getX();
@@ -48,7 +46,7 @@ void MainWindow::DrawText(vector<node*> nodeList)
          paint.setBackground( QColor( Qt::cyan ) );
          paint.drawText(rect, Qt::AlignJustify, Qtemp);
      }
-     ui->MapLbl->setPixmap(map);
+     ui->MapLbl->setPixmap(pixmap);
      ui->MapLbl->show();
 }
 
