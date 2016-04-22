@@ -25,6 +25,7 @@ public:
 private:
     Ui::MainWindow *ui;
     graph map;
+    QPixmap pixmap;
 };
 
 #endif // MAINWINDOW_H

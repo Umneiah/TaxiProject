@@ -7,50 +7,47 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
     initial();
-    //DrawPath(map.getVec());
-    DrawPath(map.Destination("2",map.oneSourceAllDestination("32")));
-    //DrawCar(map.findNodeByName("2"));
-    //trial();
+    pixmap.load(QString::fromUtf8("/home/mostafa/map.jpg"));//path of image
+    //DrawPath(map.Destination("2",map.oneSourceAllDestination("32")));
+    //DrawCar(map.findNodeByName("47"));
+    trial();
 }
 void MainWindow::DrawCar(node * car)
 {
-    QPixmap map;
-    QPen pen(Qt::red);
+
+    QPen pen(Qt::blue);
     pen.setWidth(20);
-    map.load(QString::fromUtf8("/home/mostafa/map.jpg"));
-     QPainter painter(&map);
+     QPainter painter(&pixmap);
      painter.setPen(pen);
      QPoint p;
      int x = car->getX();
      int y = car->getY();
      p.setX(x);
      p.setY(y);
-     painter.drawPoint(p);
-     ui->MapLbl->setPixmap(map);
+     painter.drawEllipse(p, 2, 2);
+     ui->MapLbl->setPixmap(pixmap);
      ui->MapLbl->show();
 }
 
 void MainWindow::trial()
 {
-    map.AddCarList("37");
-    DrawCar(map.findNodeByName("37"));
-    map.AddCarList("3");
-    DrawCar(map.findNodeByName("3"));
-    map.AddCarList("12");
-    DrawCar(map.findNodeByName("12"));
-    map.AddCarList("8");
-    DrawCar(map.findNodeByName("8"));
-    map.AddCarList("40");
-    DrawCar(map.findNodeByName("40"));
-    list<node*> hah = map.NearestCar("5");
+    map.AddCarList("45");
+    DrawCar(map.findNodeByName("45"));
+    map.AddCarList("58");
+    DrawCar(map.findNodeByName("58"));
+    map.AddCarList("36");
+    DrawCar(map.findNodeByName("36"));
+    map.AddCarList("2");
+    DrawCar(map.findNodeByName("2"));
+    map.AddCarList("7");
+    DrawCar(map.findNodeByName("7"));
+    list<node*> hah = map.NearestCar("20");
     DrawPath(hah);
 }
 void MainWindow::DrawPath(list<node *> path)
 {
-    QPixmap pixmap;
     QPen pen(Qt::red);
     pen.setWidth(10);
-    pixmap.load(QString::fromUtf8("/home/mostafa/map.jpg")); //path of image
      QPainter painter(&pixmap);
      painter.setPen(pen);
      list<node *>::iterator g=path.end();
@@ -229,7 +226,7 @@ void MainWindow::initial()
        q->addAdjnodes(p,10);
        q->addAdjnodes(w,15);
        q->addAdjnodes(z,15);
-       q->addAdjnodes(a,10);
+       q->addAdjnodes(b,10);
        w->addAdjnodes(i,10);
        w->addAdjnodes(c,10);
        w->addAdjnodes(q,15);
