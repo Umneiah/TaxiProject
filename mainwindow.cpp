@@ -29,6 +29,26 @@ void MainWindow::DrawCar(node * car)
      ui->MapLbl->show();
 }
 
+void MainWindow::DrawText(vector<node*> nodeList)
+{
+     QPixmap map;
+     map.load(QString::fromUtf8("C:/Users/omnia/Documents/-TaxiProject/map.jpg"));
+     QPainter paint(&map);
+     for(vector< node *>::iterator ii= nodeList.begin(); ii != nodeList.end(); ii++)
+     {
+         int x = (*ii)->getX();
+         int y = (*ii)->getY();
+         string temp = (*ii)->getname();
+         QString Qtemp = QString::fromStdString(temp);
+         QRectF rect(QPoint(x, y), QSize(12, 25));
+         paint.setBackgroundMode( Qt::OpaqueMode );
+         paint.setBackground( QColor( Qt::cyan ) );
+         paint.drawText(rect, Qt::AlignJustify, Qtemp);
+     }
+     ui->MapLbl->setPixmap(map);
+     ui->MapLbl->show();
+}
+
 void MainWindow::trial()
 {
     map.AddCarList("45");
@@ -380,4 +400,3 @@ void MainWindow::initial()
        wc->addAdjnodes(m,10);
        wc->addAdjnodes(f,15);
 }
-
