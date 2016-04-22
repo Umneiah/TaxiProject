@@ -19,7 +19,7 @@ public:
     ~MainWindow();
     void initial();
     void DrawPath(list<node *>path);
-    void DrawCar(node * car);
+    void DrawCar();
     void trial();
 
 private:

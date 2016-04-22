@@ -186,6 +186,10 @@ void AddCarList(string s)
     node* n =findNodeByName(s);
     CarList.push_back(n);
 }
+list<node*> GetCarList()
+{
+    return CarList;
+}
 
 graph()
 {

@@ -12,19 +12,21 @@ MainWindow::MainWindow(QWidget *parent) :
     //DrawCar(map.findNodeByName("47"));
     trial();
 }
-void MainWindow::DrawCar(node * car)
+void MainWindow::DrawCar()
 {
-
-    QPen pen(Qt::blue);
-    pen.setWidth(20);
+     QPen pen(Qt::blue);
+     pen.setWidth(20);
      QPainter painter(&pixmap);
      painter.setPen(pen);
      QPoint p;
-     int x = car->getX();
-     int y = car->getY();
-     p.setX(x);
-     p.setY(y);
+     list<node*> carlis = map.GetCarList();
+     list<node*>::iterator i;
+     for(i=carlis.begin();i!=carlis.end();++i)
+     {
+     p.setX((*i)->getX());
+     p.setY((*i)->getY());
      painter.drawEllipse(p, 2, 2);
+     }
      ui->MapLbl->setPixmap(pixmap);
      ui->MapLbl->show();
 }
@@ -32,15 +34,11 @@ void MainWindow::DrawCar(node * car)
 void MainWindow::trial()
 {
     map.AddCarList("45");
-    DrawCar(map.findNodeByName("45"));
     map.AddCarList("58");
-    DrawCar(map.findNodeByName("58"));
     map.AddCarList("36");
-    DrawCar(map.findNodeByName("36"));
     map.AddCarList("2");
-    DrawCar(map.findNodeByName("2"));
     map.AddCarList("7");
-    DrawCar(map.findNodeByName("7"));
+    DrawCar();
     list<node*> hah = map.NearestCar("20");
     DrawPath(hah);
 }
