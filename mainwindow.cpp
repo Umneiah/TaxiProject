@@ -10,7 +10,8 @@ MainWindow::MainWindow(QWidget *parent) :
     pixmap.load(QString::fromUtf8("/home/mostafa/map.jpg"));//path of image
     //DrawPath(map.Destination("2",map.oneSourceAllDestination("32")));
     //DrawCar(map.findNodeByName("47"));
-    trial();
+    //trial();
+    //DrawText(map.getVec());
 }
 void MainWindow::DrawCar()
 {
@@ -34,15 +35,15 @@ void MainWindow::DrawCar()
 void MainWindow::DrawText(vector<node*> nodeList)
 {
      QPixmap map;
-     map.load(QString::fromUtf8("C:/Users/omnia/Documents/-TaxiProject/map.jpg"));
+     map.load(QString::fromUtf8("/home/mostafa/map.jpg"));
      QPainter paint(&map);
      for(vector< node *>::iterator ii= nodeList.begin(); ii != nodeList.end(); ii++)
      {
          int x = (*ii)->getX();
          int y = (*ii)->getY();
-         string temp = (*ii)->getname();
+         string temp = (*ii)->getName();
          QString Qtemp = QString::fromStdString(temp);
-         QRectF rect(QPoint(x, y), QSize(12, 25));
+         QRectF rect(QPoint(x, y), QSize(20, 30));
          paint.setBackgroundMode( Qt::OpaqueMode );
          paint.setBackground( QColor( Qt::cyan ) );
          paint.drawText(rect, Qt::AlignJustify, Qtemp);

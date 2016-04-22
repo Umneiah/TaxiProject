@@ -24,6 +24,7 @@ public:
     void DrawPath(list<node *>path);
     void DrawCar();
     void trial();
+    void DrawText(vector<node*>);
 
 private:
     Ui::MainWindow *ui;
