@@ -186,6 +186,11 @@ void AddCarList(string s)
     node* n =findNodeByName(s);
     CarList.push_back(n);
 }
+void SetCarList(list<node*> ay)
+{
+    CarList = ay;
+}
+
 list<node*> GetCarList()
 {
     return CarList;
@@ -361,9 +366,10 @@ list<node*> NearestCar(string start)
 {
     string name;
     list<node*>::iterator i;
-    list<node*>temp;
+    list<node*>temp,tr;
     string star = (*CarList.begin())->getName();
-    int smallest = GetPathLength(Destination((*CarList.begin())->getName(),oneSourceAllDestination(start)));
+    tr = Destination((*CarList.begin())->getName(),oneSourceAllDestination(start));
+    int smallest = GetPathLength(tr);
     for(i=CarList.begin();i!=CarList.end();++i)
     {
         name = (*i)->getName();
