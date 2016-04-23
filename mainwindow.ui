@@ -57,36 +57,137 @@
        <pixmap>../../map.jpg</pixmap>
       </property>
      </widget>
-     <widget class="QPushButton" name="pushButton">
+     <widget class="QPushButton" name="ShowAll_button">
       <property name="geometry">
        <rect>
-        <x>820</x>
-        <y>190</y>
-        <width>97</width>
+        <x>796</x>
+        <y>10</y>
+        <width>161</width>
         <height>26</height>
        </rect>
       </property>
       <property name="text">
-       <string>PushButton</string>
+       <string>SHOW all available locations</string>
       </property>
      </widget>
-     <widget class="QPushButton" name="pushButton_2">
+     <widget class="QPushButton" name="Start_button">
       <property name="geometry">
        <rect>
         <x>810</x>
-        <y>460</y>
-        <width>97</width>
+        <y>290</y>
+        <width>131</width>
         <height>26</height>
        </rect>
       </property>
       <property name="text">
-       <string>PushButton</string>
+       <string>Set  Locations</string>
       </property>
      </widget>
-     <zorder>MapLbl</zorder>
-     <zorder>gridLayoutWidget</zorder>
-     <zorder>pushButton</zorder>
-     <zorder>pushButton_2</zorder>
+     <widget class="QPushButton" name="AddCars_button">
+      <property name="geometry">
+       <rect>
+        <x>870</x>
+        <y>150</y>
+        <width>75</width>
+        <height>23</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Add Car/s</string>
+      </property>
+     </widget>
+     <widget class="QPlainTextEdit" name="CarLocation_text">
+      <property name="geometry">
+       <rect>
+        <x>830</x>
+        <y>70</y>
+        <width>104</width>
+        <height>71</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label">
+      <property name="geometry">
+       <rect>
+        <x>810</x>
+        <y>40</y>
+        <width>141</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Set Required Taxi Locations:</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_2">
+      <property name="geometry">
+       <rect>
+        <x>800</x>
+        <y>199</y>
+        <width>151</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Add Your Start/End Location :</string>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="Start_text">
+      <property name="geometry">
+       <rect>
+        <x>850</x>
+        <y>220</y>
+        <width>91</width>
+        <height>21</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_3">
+      <property name="geometry">
+       <rect>
+        <x>810</x>
+        <y>220</y>
+        <width>31</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>10</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>Start:</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_4">
+      <property name="geometry">
+       <rect>
+        <x>810</x>
+        <y>260</y>
+        <width>31</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>10</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>End:</string>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="End_text">
+      <property name="geometry">
+       <rect>
+        <x>850</x>
+        <y>259</y>
+        <width>91</width>
+        <height>21</height>
+       </rect>
+      </property>
+     </widget>
     </widget>
    </widget>
   </widget>
@@ -96,7 +197,7 @@
      <x>0</x>
      <y>0</y>
      <width>1000</width>
-     <height>25</height>
+     <height>21</height>
     </rect>
    </property>
   </widget>

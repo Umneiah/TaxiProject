@@ -8,6 +8,8 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->setupUi(this);
     initial();
     pixmap.load(QString::fromUtf8("/home/mostafa/map.jpg"));//path of image
+    ui->MapLbl->setPixmap(pixmap);
+    ui->MapLbl->show();
     //DrawPath(map.Destination("2",map.oneSourceAllDestination("32")));
     //DrawCar(map.findNodeByName("47"));
     //trial();
@@ -31,6 +33,20 @@ void MainWindow::DrawCar()
      ui->MapLbl->setPixmap(pixmap);
      ui->MapLbl->show();
 }
+
+void MainWindow::DrawLocation(node* n , QString s )
+{
+     QPainter paint(&pixmap);
+         int x = n->getX();
+         int y = n->getY();
+         QRectF rect(QPoint(x, y), QSize(200, 300));
+         paint.setBackgroundMode( Qt::OpaqueMode );
+         paint.setBackground( QColor( Qt::red ) );
+         paint.drawText(rect, Qt::AlignJustify, s);
+     ui->MapLbl->setPixmap(pixmap);
+     ui->MapLbl->show();
+}
+
 
 void MainWindow::DrawText(vector<node*> nodeList)
 {
@@ -396,4 +412,33 @@ void MainWindow::initial()
        br->addAdjnodes(er,15);
        wc->addAdjnodes(m,10);
        wc->addAdjnodes(f,15);
+}
+
+void MainWindow::on_ShowAll_button_clicked()
+{
+    DrawText(map.getVec());
+}
+
+void MainWindow::on_AddCars_button_clicked()
+{
+    QString input_locations = ui->CarLocation_text->toPlainText();
+    QStringList list_of_locations = input_locations.split("\n");
+    for(QStringList :: iterator i = list_of_locations.begin() ; i != list_of_locations.end() ; i++)
+    {
+        string current_location =(*i).toLocal8Bit().constData(); //convert Qstring to string
+        map.AddCarList(current_location);
+    }
+    DrawCar();
+}
+
+void MainWindow::on_Start_button_clicked()
+{
+      QString start_location = ui->Start_text->QLineEdit::text();
+      string start =start_location.toLocal8Bit().constData(); //convert Qstring to string
+      QString End_location = ui->End_text->QLineEdit::text();
+      string end = End_location.toLocal8Bit().constData(); //convert Qstring to string
+      node* nstart = map.findNodeByName(start);
+      node* nend = map.findNodeByName(end);
+      DrawLocation(nstart , "Start");
+      DrawLocation(nend , "End");
 }
