@@ -44,8 +44,8 @@ private:
     Ui::MainWindow *ui;
     graph map;
     QPixmap pixmap;
-    string Start;
-    string Des;
+    //string Start;
+    //string Des;
     list<node*> meh;
     list<node*> heh;
 };

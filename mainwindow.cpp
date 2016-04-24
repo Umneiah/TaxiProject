@@ -92,7 +92,7 @@ void MainWindow::DrawPath(list<node *> path,int choose)
 
     }
     ui->MapLbl->setPixmap(pixmap);
-  ui->MapLbl->show();
+    ui->MapLbl->show();
 }
 
 MainWindow::~MainWindow()
@@ -310,6 +310,10 @@ void MainWindow::initial()
        Y->addAdjnodes(U,15);
        Y->addAdjnodes(A,10);
        Y->addAdjnodes(T,15);
+       T->addAdjnodes(Y,15);
+       T->addAdjnodes(R,15);
+       T->addAdjnodes(x,10);
+       T->addAdjnodes(F,10);
        U->addAdjnodes(L,10);
        U->addAdjnodes(S,10);
        U->addAdjnodes(Y,15);
@@ -422,6 +426,8 @@ void MainWindow::on_AddCars_button_clicked()
 {
     list <node*> temppp;
     temppp.clear();
+    meh.clear();
+    heh.clear();
     map.SetCarList(temppp);
     pixmap.load(QString::fromUtf8("/home/mostafa/map.jpg"));
     ui->MapLbl->setPixmap(pixmap);
@@ -440,16 +446,18 @@ void MainWindow::on_Start_button_clicked()
 {
       QString start_location = ui->Start_text->QLineEdit::text();
       string start =start_location.toLocal8Bit().constData(); //convert Qstring to string
+      string Start,Des;
       Start = start;
       QString End_location = ui->End_text->QLineEdit::text();
       string end = End_location.toLocal8Bit().constData(); //convert Qstring to string
-       Des=end;
+      Des=end;
       node* nstart = map.findNodeByName(start);
       node* nend = map.findNodeByName(end);
       DrawLocation(nstart , "End");
       DrawLocation(nend , "Start");
       meh = map.Destination(Start,map.oneSourceAllDestination(Des));
       heh = map.NearestCar(Start);
+      map.clearVisited();
 }
 
 void MainWindow::on_getCar_clicked()

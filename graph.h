@@ -158,13 +158,7 @@ private:
    bool foundCycle;//true if a cycle is found, false otherwise
    int desiredCycSize;
 
-void clearVisited()
-{
-   for(int i = 0; i < nodeList.size() && !foundCycle ; i++)
-   {
-       nodeList[i]->setStatus(NOT_VISITED);
-   }
-}
+
 
 
 public:
@@ -190,7 +184,13 @@ void SetCarList(list<node*> ay)
 {
     CarList = ay;
 }
-
+void clearVisited()
+{
+   for(int i = 0; i < nodeList.size() && !foundCycle ; i++)
+   {
+       nodeList[i]->setStatus(NOT_VISITED);
+   }
+}
 list<node*> GetCarList()
 {
     return CarList;
@@ -366,11 +366,12 @@ list<node*> NearestCar(string start)
 {
     string name;
     list<node*>::iterator i;
-    list<node*>temp,tr;
-    string star = (*CarList.begin())->getName();
-    tr = Destination((*CarList.begin())->getName(),oneSourceAllDestination(start));
+    list<node*>temp,tr,carList;
+    carList = GetCarList();
+    string star = (*carList.begin())->getName();
+    tr = Destination((*carList.begin())->getName(),oneSourceAllDestination(start));
     int smallest = GetPathLength(tr);
-    for(i=CarList.begin();i!=CarList.end();++i)
+    for(i=carList.begin();i!=carList.end();++i)
     {
         name = (*i)->getName();
         temp = Destination(name,oneSourceAllDestination(start));
