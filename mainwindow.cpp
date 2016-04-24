@@ -8,9 +8,10 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->setupUi(this);
     initial();
     pixmap.load(QString::fromUtf8("C:/map.jpg"));//path of image
+    //DrawPath1(map.Destination("10",map.oneSourceAllDestination("5")));
+   // DrawPath(map.Destination("2",map.oneSourceAllDestination("32")));
     ui->MapLbl->setPixmap(pixmap);
     ui->MapLbl->show();
-    //DrawPath(map.Destination("2",map.oneSourceAllDestination("32")));
     //DrawCar(map.findNodeByName("47"));
     //trial();
     //DrawText(map.getVec());
@@ -37,8 +38,8 @@ void MainWindow::DrawCar()
 void MainWindow::DrawLocation(node* n , QString s )
 {
      QPainter paint(&pixmap);
-         int x = n->getX();
-         int y = n->getY();
+         int x = n->getX()-3;
+         int y = n->getY()-4;
          QRectF rect(QPoint(x, y), QSize(200, 300));
          paint.setBackgroundMode( Qt::OpaqueMode );
          paint.setBackground( QColor( Qt::red ) );
@@ -48,7 +49,7 @@ void MainWindow::DrawLocation(node* n , QString s )
 }
 
 
-void MainWindow::DrawText(vector<node*> nodeList)
+void MainWindow::DrawTextt(vector<node*> nodeList)
 {
      QPainter paint(&pixmap);
      for(vector< node *>::iterator ii= nodeList.begin(); ii != nodeList.end(); ii++)
@@ -57,7 +58,7 @@ void MainWindow::DrawText(vector<node*> nodeList)
          int y = (*ii)->getY();
          string temp = (*ii)->getName();
          QString Qtemp = QString::fromStdString(temp);
-         QRectF rect(QPoint(x, y), QSize(20, 30));
+         QRectF rect(QPoint(x-3, y-4), QSize(20, 30));
          paint.setBackgroundMode( Qt::OpaqueMode );
          paint.setBackground( QColor( Qt::cyan ) );
          paint.drawText(rect, Qt::AlignJustify, Qtemp);
@@ -75,11 +76,13 @@ void MainWindow::trial()
     map.AddCarList("7");
     DrawCar();
     list<node*> hah = map.NearestCar("20");
-    DrawPath(hah);
+    DrawPath(hah,0);
 }
-void MainWindow::DrawPath(list<node *> path)
+void MainWindow::DrawPath(list<node *> path,int choose)
 {
-    QPen pen(Qt::red);
+    QPen pen;
+    if (choose == 1) pen.setColor(Qt::red);
+    else pen.setColor(Qt::green);
     pen.setWidth(10);
      QPainter painter(&pixmap);
      painter.setPen(pen);
@@ -92,10 +95,12 @@ void MainWindow::DrawPath(list<node *> path)
           QLine l;
           l.setLine((*i)->getX(),(*i)->getY(),(*(temp))->getX(),(*(temp))->getY());
           painter.drawLine(l);
-           ui->MapLbl->setPixmap(pixmap);
-         ui->MapLbl->show();
+
     }
+    ui->MapLbl->setPixmap(pixmap);
+  ui->MapLbl->show();
 }
+
 MainWindow::~MainWindow()
 {
     delete ui;
@@ -416,11 +421,17 @@ void MainWindow::initial()
 
 void MainWindow::on_ShowAll_button_clicked()
 {
-    DrawText(map.getVec());
+    DrawTextt(map.getVec());
 }
 
 void MainWindow::on_AddCars_button_clicked()
 {
+    list <node*> temppp;
+    temppp.clear();
+    map.SetCarList(temppp);
+    pixmap.load(QString::fromUtf8("C:/map.jpg"));
+    ui->MapLbl->setPixmap(pixmap);
+    ui->MapLbl->show();
     QString input_locations = ui->CarLocation_text->toPlainText();
     QStringList list_of_locations = input_locations.split("\n");
     for(QStringList :: iterator i = list_of_locations.begin() ; i != list_of_locations.end() ; i++)
@@ -435,10 +446,27 @@ void MainWindow::on_Start_button_clicked()
 {
       QString start_location = ui->Start_text->QLineEdit::text();
       string start =start_location.toLocal8Bit().constData(); //convert Qstring to string
+      Start = start;
       QString End_location = ui->End_text->QLineEdit::text();
       string end = End_location.toLocal8Bit().constData(); //convert Qstring to string
+       Des=end;
       node* nstart = map.findNodeByName(start);
       node* nend = map.findNodeByName(end);
-      DrawLocation(nstart , "Start");
-      DrawLocation(nend , "End");
+      DrawLocation(nstart , "End");
+      DrawLocation(nend , "Start");
+      meh = map.Destination(Start,map.oneSourceAllDestination(Des));
+      heh = map.NearestCar(Start);
+}
+
+void MainWindow::on_getCar_clicked()
+{
+   DrawPath(heh,0);
+}
+
+void MainWindow::on_Run_clicked()
+{
+   DrawPath(meh,1);
+   QString og = QString::number(map.GetPathLength(meh));
+   QString og1 = QString::number(map.GetPathLength(meh)*2.5/10);
+   ui->ogra->setText("Path length = "+og +" m"+"\n"+"Cost = "+og1+" LE");
 }

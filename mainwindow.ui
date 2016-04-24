@@ -18,7 +18,7 @@
     <property name="geometry">
      <rect>
       <x>0</x>
-      <y>0</y>
+      <y>-20</y>
       <width>1000</width>
       <height>730</height>
      </rect>
@@ -61,7 +61,7 @@
       <property name="geometry">
        <rect>
         <x>796</x>
-        <y>10</y>
+        <y>30</y>
         <width>161</width>
         <height>26</height>
        </rect>
@@ -74,7 +74,7 @@
       <property name="geometry">
        <rect>
         <x>810</x>
-        <y>290</y>
+        <y>310</y>
         <width>131</width>
         <height>26</height>
        </rect>
@@ -86,8 +86,8 @@
      <widget class="QPushButton" name="AddCars_button">
       <property name="geometry">
        <rect>
-        <x>870</x>
-        <y>150</y>
+        <x>840</x>
+        <y>270</y>
         <width>75</width>
         <height>23</height>
        </rect>
@@ -100,7 +100,7 @@
       <property name="geometry">
        <rect>
         <x>830</x>
-        <y>70</y>
+        <y>90</y>
         <width>104</width>
         <height>71</height>
        </rect>
@@ -110,7 +110,7 @@
       <property name="geometry">
        <rect>
         <x>810</x>
-        <y>40</y>
+        <y>60</y>
         <width>141</width>
         <height>20</height>
        </rect>
@@ -119,11 +119,37 @@
        <string>Set Required Taxi Locations:</string>
       </property>
      </widget>
+     <widget class="QPushButton" name="Run">
+      <property name="geometry">
+       <rect>
+        <x>850</x>
+        <y>400</y>
+        <width>75</width>
+        <height>23</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Run</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="getCar">
+      <property name="geometry">
+       <rect>
+        <x>850</x>
+        <y>350</y>
+        <width>75</width>
+        <height>23</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Get Car</string>
+      </property>
+     </widget>
      <widget class="QLabel" name="label_2">
       <property name="geometry">
        <rect>
-        <x>800</x>
-        <y>199</y>
+        <x>790</x>
+        <y>170</y>
         <width>151</width>
         <height>21</height>
        </rect>
@@ -132,39 +158,11 @@
        <string>Add Your Start/End Location :</string>
       </property>
      </widget>
-     <widget class="QLineEdit" name="Start_text">
-      <property name="geometry">
-       <rect>
-        <x>850</x>
-        <y>220</y>
-        <width>91</width>
-        <height>21</height>
-       </rect>
-      </property>
-     </widget>
-     <widget class="QLabel" name="label_3">
-      <property name="geometry">
-       <rect>
-        <x>810</x>
-        <y>220</y>
-        <width>31</width>
-        <height>16</height>
-       </rect>
-      </property>
-      <property name="font">
-       <font>
-        <pointsize>10</pointsize>
-       </font>
-      </property>
-      <property name="text">
-       <string>Start:</string>
-      </property>
-     </widget>
      <widget class="QLabel" name="label_4">
       <property name="geometry">
        <rect>
-        <x>810</x>
-        <y>260</y>
+        <x>800</x>
+        <y>231</y>
         <width>31</width>
         <height>16</height>
        </rect>
@@ -178,14 +176,58 @@
        <string>End:</string>
       </property>
      </widget>
-     <widget class="QLineEdit" name="End_text">
+     <widget class="QLabel" name="label_3">
       <property name="geometry">
        <rect>
-        <x>850</x>
-        <y>259</y>
+        <x>800</x>
+        <y>191</y>
+        <width>31</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>10</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>Start:</string>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="Start_text">
+      <property name="geometry">
+       <rect>
+        <x>840</x>
+        <y>230</y>
         <width>91</width>
         <height>21</height>
        </rect>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="End_text">
+      <property name="geometry">
+       <rect>
+        <x>840</x>
+        <y>190</y>
+        <width>91</width>
+        <height>21</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QLabel" name="ogra">
+      <property name="geometry">
+       <rect>
+        <x>830</x>
+        <y>450</y>
+        <width>141</width>
+        <height>91</height>
+       </rect>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::NoFrame</enum>
+      </property>
+      <property name="text">
+       <string/>
       </property>
      </widget>
     </widget>
