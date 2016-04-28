@@ -28,7 +28,6 @@ void MainWindow::DrawCar()
      ui->MapLbl->setPixmap(pixmap);
      ui->MapLbl->show();
 }
-
 void MainWindow::DrawLocation(node* n , QString s )
 {
      QPainter paint(&pixmap);
@@ -41,8 +40,6 @@ void MainWindow::DrawLocation(node* n , QString s )
      ui->MapLbl->setPixmap(pixmap);
      ui->MapLbl->show();
 }
-
-
 void MainWindow::DrawTextt(vector<node*> nodeList)
 {
      QPainter paint(&pixmap);
@@ -60,7 +57,6 @@ void MainWindow::DrawTextt(vector<node*> nodeList)
      ui->MapLbl->setPixmap(pixmap);
      ui->MapLbl->show();
 }
-
 void MainWindow::trial()
 {
     map.AddCarList("45");
@@ -94,7 +90,6 @@ void MainWindow::DrawPath(list<node *> path,int choose)
     ui->MapLbl->setPixmap(pixmap);
     ui->MapLbl->show();
 }
-
 MainWindow::~MainWindow()
 {
     delete ui;
@@ -411,17 +406,16 @@ void MainWindow::initial()
        aq->addAdjnodes(qq,10);
        tr->addAdjnodes(br,15);
        tr->addAdjnodes(oo,10);
+       tr->addAdjnodes(aq,15); //check keda
        br->addAdjnodes(ff,10);
        br->addAdjnodes(er,15);
        wc->addAdjnodes(m,10);
        wc->addAdjnodes(f,15);
 }
-
 void MainWindow::on_ShowAll_button_clicked()
 {
     DrawTextt(map.getVec());
 }
-
 void MainWindow::on_AddCars_button_clicked()
 {
     list <node*> temppp;
@@ -436,12 +430,12 @@ void MainWindow::on_AddCars_button_clicked()
     QStringList list_of_locations = input_locations.split("\n");
     for(QStringList :: iterator i = list_of_locations.begin() ; i != list_of_locations.end() ; i++)
     {
+        if((*i)=="") break;
         string current_location =(*i).toLocal8Bit().constData(); //convert Qstring to string
         map.AddCarList(current_location);
     }
     DrawCar();
 }
-
 void MainWindow::on_Start_button_clicked()
 {
       QString start_location = ui->Start_text->QLineEdit::text();
@@ -459,12 +453,10 @@ void MainWindow::on_Start_button_clicked()
       heh = map.NearestCar(Start);
       map.clearVisited();
 }
-
 void MainWindow::on_getCar_clicked()
 {
    DrawPath(heh,0);
 }
-
 void MainWindow::on_Run_clicked()
 {
    DrawPath(meh,1);

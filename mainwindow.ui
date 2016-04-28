@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1080</width>
-    <height>1500</height>
+    <width>974</width>
+    <height>782</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -18,8 +18,8 @@
     <property name="geometry">
      <rect>
       <x>0</x>
-      <y>-20</y>
-      <width>1000</width>
+      <y>0</y>
+      <width>974</width>
       <height>730</height>
      </rect>
     </property>
@@ -57,181 +57,502 @@
        <pixmap>../../map.jpg</pixmap>
       </property>
      </widget>
-     <widget class="QPushButton" name="ShowAll_button">
-      <property name="geometry">
-       <rect>
-        <x>796</x>
-        <y>30</y>
-        <width>161</width>
-        <height>26</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>SHOW all available locations</string>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="Start_button">
-      <property name="geometry">
-       <rect>
-        <x>810</x>
-        <y>310</y>
-        <width>131</width>
-        <height>26</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Set  Locations</string>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="AddCars_button">
-      <property name="geometry">
-       <rect>
-        <x>840</x>
-        <y>270</y>
-        <width>75</width>
-        <height>23</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Add Car/s</string>
-      </property>
-     </widget>
-     <widget class="QPlainTextEdit" name="CarLocation_text">
-      <property name="geometry">
-       <rect>
-        <x>830</x>
-        <y>90</y>
-        <width>104</width>
-        <height>71</height>
-       </rect>
-      </property>
-     </widget>
-     <widget class="QLabel" name="label">
-      <property name="geometry">
-       <rect>
-        <x>810</x>
-        <y>60</y>
-        <width>141</width>
-        <height>20</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Set Required Taxi Locations:</string>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="Run">
-      <property name="geometry">
-       <rect>
-        <x>850</x>
-        <y>400</y>
-        <width>75</width>
-        <height>23</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Run</string>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="getCar">
-      <property name="geometry">
-       <rect>
-        <x>850</x>
-        <y>350</y>
-        <width>75</width>
-        <height>23</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Get Car</string>
-      </property>
-     </widget>
-     <widget class="QLabel" name="label_2">
+     <widget class="QGroupBox" name="groupBox">
       <property name="geometry">
        <rect>
         <x>790</x>
-        <y>170</y>
-        <width>151</width>
-        <height>21</height>
+        <y>320</y>
+        <width>161</width>
+        <height>161</height>
        </rect>
       </property>
-      <property name="text">
-       <string>Add Your Start/End Location :</string>
+      <property name="styleSheet">
+       <string notr="true">QGroupBox { 
+     border: 2px solid white; 
+     border-radius: 3px; 
+ } </string>
       </property>
+      <property name="title">
+       <string>Set your own</string>
+      </property>
+      <widget class="QLabel" name="label_4">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>70</y>
+         <width>31</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>10</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>End:</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="Start_text">
+       <property name="geometry">
+        <rect>
+         <x>50</x>
+         <y>70</y>
+         <width>91</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QLineEdit:hover
+{
+    border: 1px solid #78879b;
+    color: black;
+}</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_3">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>40</y>
+         <width>31</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>10</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>Start:</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="End_text">
+       <property name="geometry">
+        <rect>
+         <x>50</x>
+         <y>40</y>
+         <width>91</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QLineEdit:hover
+{
+    border: 1px solid #78879b;
+    color: black;
+}</string>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="Start_button">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>110</y>
+         <width>131</width>
+         <height>26</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QPushButton
+{
+    color: silver;
+    background-color: #302F2F;
+    border-width: 1px;
+    border-color: #4A4949;
+    border-style: solid;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 5px;
+    padding-right: 5px;
+    border-radius: 2px;
+    outline: none;
+}
+
+QPushButton:disabled
+{
+    background-color: #302F2F;
+    border-width: 1px;
+    border-color: #3A3939;
+    border-style: solid;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+    /*border-radius: 2px;*/
+    color: #454545;
+}
+
+QPushButton:focus {
+    background-color:yellow;
+    color: black;
+}
+QPushButton:checked{
+    background-color: #4A4949;
+    border-color: #6A6969;
+}
+QPushButton:hover
+{
+    border: 1px solid yellow;
+    color: yellow;
+	background-color: #4A4949;
+}</string>
+       </property>
+       <property name="text">
+        <string>Set  Locations</string>
+       </property>
+      </widget>
      </widget>
-     <widget class="QLabel" name="label_4">
+     <widget class="QGroupBox" name="groupBox_2">
       <property name="geometry">
        <rect>
-        <x>800</x>
-        <y>231</y>
-        <width>31</width>
-        <height>16</height>
+        <x>790</x>
+        <y>130</y>
+        <width>161</width>
+        <height>181</height>
        </rect>
       </property>
-      <property name="font">
-       <font>
-        <pointsize>10</pointsize>
-       </font>
+      <property name="styleSheet">
+       <string notr="true">QGroupBox { 
+     border: 2px solid white; 
+     border-radius: 3px; 
+ } </string>
       </property>
-      <property name="text">
-       <string>End:</string>
+      <property name="title">
+       <string>Car centers</string>
       </property>
+      <widget class="QPushButton" name="AddCars_button">
+       <property name="geometry">
+        <rect>
+         <x>40</x>
+         <y>150</y>
+         <width>75</width>
+         <height>23</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QPushButton
+{
+    color: silver;
+    background-color: #302F2F;
+    border-width: 1px;
+    border-color: #4A4949;
+    border-style: solid;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 5px;
+    padding-right: 5px;
+    border-radius: 2px;
+    outline: none;
+}
+
+QPushButton:disabled
+{
+    background-color: #302F2F;
+    border-width: 1px;
+    border-color: #3A3939;
+    border-style: solid;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+    /*border-radius: 2px;*/
+    color: #454545;
+}
+
+QPushButton:focus {
+    background-color:yellow;
+    color: black;
+}
+QPushButton:checked{
+    background-color: #4A4949;
+    border-color: #6A6969;
+}
+QPushButton:hover
+{
+    border: 1px solid yellow;
+    color: yellow;
+	background-color: #4A4949;
+}</string>
+       </property>
+       <property name="text">
+        <string>Add Car/s</string>
+       </property>
+      </widget>
+      <widget class="QPlainTextEdit" name="CarLocation_text">
+       <property name="geometry">
+        <rect>
+         <x>30</x>
+         <y>70</y>
+         <width>101</width>
+         <height>71</height>
+        </rect>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>40</y>
+         <width>141</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Set Taxi Locations:</string>
+       </property>
+      </widget>
      </widget>
-     <widget class="QLabel" name="label_3">
+     <widget class="QGroupBox" name="groupBox_3">
       <property name="geometry">
        <rect>
-        <x>800</x>
-        <y>191</y>
-        <width>31</width>
-        <height>16</height>
-       </rect>
-      </property>
-      <property name="font">
-       <font>
-        <pointsize>10</pointsize>
-       </font>
-      </property>
-      <property name="text">
-       <string>Start:</string>
-      </property>
-     </widget>
-     <widget class="QLineEdit" name="Start_text">
-      <property name="geometry">
-       <rect>
-        <x>840</x>
-        <y>230</y>
-        <width>91</width>
-        <height>21</height>
-       </rect>
-      </property>
-     </widget>
-     <widget class="QLineEdit" name="End_text">
-      <property name="geometry">
-       <rect>
-        <x>840</x>
-        <y>190</y>
-        <width>91</width>
-        <height>21</height>
-       </rect>
-      </property>
-     </widget>
-     <widget class="QLabel" name="ogra">
-      <property name="geometry">
-       <rect>
-        <x>810</x>
-        <y>470</y>
-        <width>141</width>
+        <x>790</x>
+        <y>30</y>
+        <width>161</width>
         <height>91</height>
        </rect>
       </property>
-      <property name="frameShape">
-       <enum>QFrame::StyledPanel</enum>
+      <property name="styleSheet">
+       <string notr="true">QGroupBox { 
+     border: 2px solid white; 
+     border-radius: 3px; 
+ } </string>
       </property>
-      <property name="frameShadow">
-       <enum>QFrame::Plain</enum>
+      <property name="title">
+       <string>Available locations</string>
       </property>
-      <property name="text">
-       <string/>
+      <widget class="QPushButton" name="ShowAll_button">
+       <property name="geometry">
+        <rect>
+         <x>40</x>
+         <y>50</y>
+         <width>81</width>
+         <height>31</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QPushButton
+{
+    color: silver;
+    background-color: #302F2F;
+    border-width: 1px;
+    border-color: #4A4949;
+    border-style: solid;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 5px;
+    padding-right: 5px;
+    border-radius: 2px;
+    outline: none;
+}
+
+QPushButton:disabled
+{
+    background-color: #302F2F;
+    border-width: 1px;
+    border-color: #3A3939;
+    border-style: solid;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+    /*border-radius: 2px;*/
+    color: #454545;
+}
+
+QPushButton:focus {
+    background-color: red;
+    color: black;
+}
+QPushButton:checked{
+    background-color: #4A4949;
+    border-color: #6A6969;
+}
+QPushButton:hover
+{
+    border: 1px solid red;
+    color: red;
+	background-color: #4A4949;
+}</string>
+       </property>
+       <property name="text">
+        <string>Show All!</string>
+       </property>
+      </widget>
+     </widget>
+     <widget class="QGroupBox" name="groupBox_4">
+      <property name="geometry">
+       <rect>
+        <x>810</x>
+        <y>490</y>
+        <width>120</width>
+        <height>111</height>
+       </rect>
       </property>
+      <property name="styleSheet">
+       <string notr="true">QGroupBox { 
+     border: 2px solid white; 
+     border-radius: 3px; 
+ } </string>
+      </property>
+      <property name="title">
+       <string>Here we go</string>
+      </property>
+      <widget class="QPushButton" name="Run">
+       <property name="geometry">
+        <rect>
+         <x>20</x>
+         <y>80</y>
+         <width>75</width>
+         <height>23</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QPushButton
+{
+    color: silver;
+    background-color: #302F2F;
+    border-width: 1px;
+    border-color: #4A4949;
+    border-style: solid;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 5px;
+    padding-right: 5px;
+    border-radius: 2px;
+    outline: none;
+}
+
+QPushButton:disabled
+{
+    background-color: #302F2F;
+    border-width: 1px;
+    border-color: #3A3939;
+    border-style: solid;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+    /*border-radius: 2px;*/
+    color: #454545;
+}
+
+QPushButton:focus {
+    background-color: #00FF00;
+    color: black;
+}
+QPushButton:checked{
+    background-color: #4A4949;
+    border-color: #6A6969;
+}
+QPushButton:hover
+{
+    border: 1px solid #00FF00;
+    color: #00FF00;
+	background-color: #4A4949;
+}</string>
+       </property>
+       <property name="text">
+        <string>Run!</string>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="getCar">
+       <property name="geometry">
+        <rect>
+         <x>20</x>
+         <y>40</y>
+         <width>75</width>
+         <height>23</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QPushButton
+{
+    color: silver;
+    background-color: #302F2F;
+    border-width: 1px;
+    border-color: #4A4949;
+    border-style: solid;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 5px;
+    padding-right: 5px;
+    border-radius: 2px;
+    outline: none;
+}
+
+QPushButton:disabled
+{
+    background-color: #302F2F;
+    border-width: 1px;
+    border-color: #3A3939;
+    border-style: solid;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+    /*border-radius: 2px;*/
+    color: #454545;
+}
+
+QPushButton:focus {
+    background-color:cyan;
+    color: black;
+}
+QPushButton:checked{
+    background-color: #4A4949;
+    border-color: #6A6969;
+}
+QPushButton:hover
+{
+    border: 1px solid cyan;
+    color: cyan;
+	background-color: #4A4949;
+}</string>
+       </property>
+       <property name="text">
+        <string>Get Car</string>
+       </property>
+      </widget>
+     </widget>
+     <widget class="QGroupBox" name="groupBox_5">
+      <property name="geometry">
+       <rect>
+        <x>790</x>
+        <y>610</y>
+        <width>161</width>
+        <height>111</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QGroupBox { 
+     border: 2px solid white; 
+     border-radius: 3px; 
+ } </string>
+      </property>
+      <property name="title">
+       <string>Distance and Cost</string>
+      </property>
+      <widget class="QLabel" name="ogra">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>30</y>
+         <width>141</width>
+         <height>71</height>
+        </rect>
+       </property>
+       <property name="frameShape">
+        <enum>QFrame::NoFrame</enum>
+       </property>
+       <property name="frameShadow">
+        <enum>QFrame::Plain</enum>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
      </widget>
     </widget>
    </widget>
@@ -241,18 +562,10 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1080</width>
+     <width>974</width>
      <height>25</height>
     </rect>
    </property>
-  </widget>
-  <widget class="QToolBar" name="mainToolBar">
-   <attribute name="toolBarArea">
-    <enum>TopToolBarArea</enum>
-   </attribute>
-   <attribute name="toolBarBreak">
-    <bool>false</bool>
-   </attribute>
   </widget>
   <widget class="QStatusBar" name="statusBar"/>
  </widget>

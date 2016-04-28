@@ -20,3 +20,8 @@ HEADERS  += mainwindow.h \
     graph.h
 
 FORMS    += mainwindow.ui
+
+DISTFILES +=
+
+RESOURCES += \
+    qdarkstyle/style.qrc
