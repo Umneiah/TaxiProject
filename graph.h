@@ -330,6 +330,7 @@ list<node*> Destination(string dst,list<node*> shortestPaths)
                shortestPath.push_back(help.top());
                help.pop();
            }
+           clearVisited();
            return shortestPath;
        }
    }

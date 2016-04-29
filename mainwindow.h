@@ -35,6 +35,7 @@ private slots:
 private:
     Ui::MainWindow *ui;
     graph map;
+    graph TempMap;
     QPixmap pixmap;
     //string Start;
     //string Des;

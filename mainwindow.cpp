@@ -7,6 +7,9 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
     initial();
+    list<node*> tr = map.Destination("55",map.oneSourceAllDestination("22"));
+    map.clearVisited();
+    //TempMap = map;
     pixmap.load(QString::fromUtf8("/home/mostafa/map.jpg"));//path of image
     ui->MapLbl->setPixmap(pixmap);
     ui->MapLbl->show();
@@ -172,7 +175,7 @@ void MainWindow::initial()
        map.addNewNode(EE);
        node *QQ = new node("37",510,507);
        map.addNewNode(QQ);
-       node *WW = new node("38",535,621);
+       node *WW = new node("38",534,620);
        map.addNewNode(WW);
        node *DDD = new node("39",559,732);
        map.addNewNode(DDD);
@@ -447,11 +450,11 @@ void MainWindow::on_Start_button_clicked()
       Des=end;
       node* nstart = map.findNodeByName(start);
       node* nend = map.findNodeByName(end);
-      DrawLocation(nstart , "End");
-      DrawLocation(nend , "Start");
+      DrawLocation(nstart , "Start");
+      DrawLocation(nend , "End");
       meh = map.Destination(Start,map.oneSourceAllDestination(Des));
       heh = map.NearestCar(Start);
-      map.clearVisited();
+      //map.clearVisited();
 }
 void MainWindow::on_getCar_clicked()
 {
