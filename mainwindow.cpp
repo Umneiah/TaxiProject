@@ -1,5 +1,6 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
+#include <QMessageBox>
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -434,11 +435,20 @@ void MainWindow::on_AddCars_button_clicked()
     ui->MapLbl->show();
     QString input_locations = ui->CarLocation_text->toPlainText();
     QStringList list_of_locations = input_locations.split("\n");
-    for(QStringList :: iterator i = list_of_locations.begin() ; i != list_of_locations.end() ; i++)
+    if (input_locations.length() == 0)
     {
-        if((*i)=="") break;
-        string current_location =(*i).toLocal8Bit().constData(); //convert Qstring to string
-        map.AddCarList(current_location);
+        QMessageBox messageBox;
+        messageBox.critical(0,"Error","Enter Taxi locations!");
+        messageBox.setFixedSize(0,0);
+    }
+    else
+    {
+        for(QStringList :: iterator i = list_of_locations.begin() ; i != list_of_locations.end() ; i++)
+        {
+            if((*i)=="") break;
+            string current_location =(*i).toLocal8Bit().constData(); //convert Qstring to string
+            map.AddCarList(current_location);
+        }
     }
     DrawCar();
 }
@@ -446,22 +456,33 @@ void MainWindow::on_Start_button_clicked()
 {
       QString start_location = ui->Start_text->QLineEdit::text();
       string start =start_location.toLocal8Bit().constData(); //convert Qstring to string
-      string Start,Des;
-      Start = start;
       QString End_location = ui->End_text->QLineEdit::text();
       string end = End_location.toLocal8Bit().constData(); //convert Qstring to string
-      Des=end;
-      node* nstart = map.findNodeByName(start);
-      node* nend = map.findNodeByName(end);
-      DrawLocation(nstart , "Start");
-      DrawLocation(nend , "End");
-      meh = map.Destination(Start,map.oneSourceAllDestination(Des));
-      heh = map.NearestCar(Start);
-      //map.clearVisited();
+      if (start.length() != 0 || end.length() != 0)
+      {
+          node* nstart = map.findNodeByName(start);
+          node* nend = map.findNodeByName(end);
+          DrawLocation(nstart , "Start");
+          DrawLocation(nend , "End");
+          meh = map.Destination(start,map.oneSourceAllDestination(end));
+          if(! map.GetCarList().empty()) heh = map.NearestCar(start);
+      }
+      else
+      {
+          QMessageBox messageBox;
+          messageBox.critical(0,"Error","Enter Start and Destinition!");
+          messageBox.setFixedSize(0,0);
+      }
 }
 void MainWindow::on_getCar_clicked()
 {
-   DrawPath(heh,0);
+   if(map.GetCarList().empty())
+   {
+       QMessageBox messageBox;
+       messageBox.critical(0,"Error","Enter Taxi locations!");
+       messageBox.setFixedSize(0,0);
+   }
+   else DrawPath(heh,0);
 }
 void MainWindow::on_Run_clicked()
 {
