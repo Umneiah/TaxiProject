@@ -346,15 +346,18 @@ int GetPathLength(list<node*> req)
     int total = 0;
     for (i = req.begin();i!=req.end();++i)
     {
-        k = i;
-        k++;
-        edg = (*i)->getAdjNodeList();
-        for(kk=edg.begin();kk!=edg.end();++kk)
+        if(i!=req.end())
         {
-            if(kk->getDstNode() == *k)
+            k = i;
+            k++;
+            edg = (*i)->getAdjNodeList();
+            for(kk=edg.begin();kk!=edg.end();++kk)
             {
-                total += kk->getCost();
-                goto opt;
+                if(kk->getDstNode() == *k)
+                {
+                    total += kk->getCost();
+                    goto opt;
+                }
             }
         }
         opt:;

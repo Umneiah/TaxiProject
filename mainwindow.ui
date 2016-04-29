@@ -362,7 +362,7 @@ QPushButton:disabled
 }
 
 QPushButton:focus {
-    background-color: red;
+    background-color: magenta;
     color: black;
 }
 QPushButton:checked{
@@ -371,8 +371,8 @@ QPushButton:checked{
 }
 QPushButton:hover
 {
-    border: 1px solid red;
-    color: red;
+    border: 1px solid magenta;
+    color: magenta;
 	background-color: #4A4949;
 }</string>
        </property>
