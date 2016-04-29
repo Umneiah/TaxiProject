@@ -43,8 +43,4 @@
   <qresource prefix="qdarkstyle">
       <file>style.qss</file>
   </qresource>
-  <qresource prefix="images">
-       <file>car.png</file>
-       <file>map.jpg</file>
-  </qresource>
 </RCC>

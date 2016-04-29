@@ -10,9 +10,7 @@ MainWindow::MainWindow(QWidget *parent) :
     initial();
     list<node*> tr = map.Destination("55",map.oneSourceAllDestination("22"));
     map.clearVisited();
-    //TempMap = map;
-    pixmap.load(QString::fromUtf8("/home/mostafa/map.jpg"));//path of image
-    //pixmap.load(QString::fromUtf8("c:/map.jpg"));//path of image
+    pixmap.load(QString::fromUtf8(":images/map.jpg"));//path of image
     ui->MapLbl->setPixmap(pixmap);
     ui->MapLbl->show();
 }
@@ -21,7 +19,7 @@ void MainWindow::DrawCar()
      QPainter painter(&pixmap);
      QPoint p;
      QImage car;
-     car.load(QString::fromUtf8("/home/mostafa/car.png"));  //path of car.png
+     car.load(QString::fromUtf8(":images/car.png"));  //path of car.png
      list<node*> carlis = map.GetCarList();
      list<node*>::iterator i;
      for(i=carlis.begin();i!=carlis.end();++i)
@@ -429,8 +427,7 @@ void MainWindow::on_AddCars_button_clicked()
     meh.clear();
     heh.clear();
     map.SetCarList(temppp);
-    pixmap.load(QString::fromUtf8("/home/mostafa/map.jpg"));
-    //pixmap.load(QString::fromUtf8("c:/map.jpg"));
+    pixmap.load(QString::fromUtf8(":images/map.jpg"));
     ui->MapLbl->setPixmap(pixmap);
     ui->MapLbl->show();
     QString input_locations = ui->CarLocation_text->toPlainText();
