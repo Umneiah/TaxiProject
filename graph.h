@@ -230,6 +230,16 @@ list<node*>::iterator findMin( list<node*>::iterator first, list<node*>::iterato
          smallest = first;
    return smallest;
 }
+void CarMovement(node * original,node * desired)
+{
+    for(list<node*>::iterator i = CarList.begin();i!=CarList.end();i++)
+    {
+        node * test = *i;
+        if((*i) == original)
+            i = CarList.erase(i);
+    }
+    CarList.push_back(desired);
+}
 
 /*
 void createGraph()

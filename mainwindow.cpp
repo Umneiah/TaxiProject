@@ -88,7 +88,6 @@ void MainWindow::DrawPath(list<node *> path,int choose)
           QLine l;
           l.setLine((*i)->getX(),(*i)->getY(),(*(temp))->getX(),(*(temp))->getY());
           painter.drawLine(l);
-
     }
     ui->MapLbl->setPixmap(pixmap);
     ui->MapLbl->show();
@@ -459,6 +458,8 @@ void MainWindow::on_Start_button_clicked()
       {
           node* nstart = map.findNodeByName(start);
           node* nend = map.findNodeByName(end);
+          start1=nstart;
+          end1=nend;
           DrawLocation(nstart , "Start");
           DrawLocation(nend , "End");
           meh = map.Destination(start,map.oneSourceAllDestination(end));
@@ -479,14 +480,40 @@ void MainWindow::on_getCar_clicked()
        messageBox.critical(0,"Error","Enter Taxi locations!");
        messageBox.setFixedSize(0,0);
    }
-   else DrawPath(heh,0);
+   else
+   {
+       QString start_location = ui->Start_text->QLineEdit::text();
+       string start =start_location.toLocal8Bit().constData(); //convert Qstring to string
+       node * ori = heh.back();
+       map.CarMovement(ori,map.findNodeByName(start));
+       pixmap.load(QString::fromUtf8(":images/map.jpg"));
+       ui->MapLbl->setPixmap(pixmap);
+       ui->MapLbl->show();
+       DrawCar();
+       DrawPath(heh,0);
+       DrawLocation(start1 , "Start");
+       DrawLocation(end1 , "End");
+
+   }
 }
 void MainWindow::on_Run_clicked()
 {
-   DrawPath(meh,1);
-   QString og = QString::number(map.GetPathLength(meh));
-   QString og1 = QString::number(map.GetPathLength(meh)*2.5/10);
-   ui->ogra->setText("Path length = "+og +" m"+"\n"+"Cost = "+og1+" LE");
+    QString start_location = ui->Start_text->QLineEdit::text();
+    string start =start_location.toLocal8Bit().constData();
+    QString End_location = ui->End_text->QLineEdit::text();
+    string end = End_location.toLocal8Bit().constData(); //convert Qstring to string
+    map.CarMovement(map.findNodeByName(start),map.findNodeByName(end));
+    pixmap.load(QString::fromUtf8(":images/map.jpg"));
+    ui->MapLbl->setPixmap(pixmap);
+    ui->MapLbl->show();
+    DrawCar();
+    DrawPath(heh,0);
+    DrawLocation(start1 , "Start");
+    DrawLocation(end1 , "End");
+    DrawPath(meh,1);
+    QString og = QString::number(map.GetPathLength(meh));
+    QString og1 = QString::number(map.GetPathLength(meh)*2.5/10);
+    ui->ogra->setText("Path length = "+og +" m"+"\n"+"Cost = "+og1+" LE");
 }
 
 void MainWindow::on_save_clicked()
@@ -506,14 +533,19 @@ void MainWindow::on_save_clicked()
 
 void MainWindow::on_load_clicked()
 {
+    QString written;
      QFile e("state.txt");
      e.open(QIODevice::ReadOnly | QIODevice::Text);
      QTextStream in(&e);
-     while(!in.atEnd()) {
+     while(!in.atEnd())
+     {
          QString line = in.readLine();
          string c =line.toLocal8Bit().constData(); //convert Qstring to string
-           map.AddCarList(c);
-
+         map.AddCarList(c);
+         written+=line;
+         if(!in.atEnd()) written+="\n";
      }
+     e.resize(0);
+     ui->CarLocation_text->setPlainText(written);
     DrawCar();
 }

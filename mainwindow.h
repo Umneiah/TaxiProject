@@ -47,6 +47,8 @@ private:
     //string Des;
     list<node*> meh;
     list<node*> heh;
+    node* start1;
+    node* end1;
 };
 
 #endif // MAINWINDOW_H
