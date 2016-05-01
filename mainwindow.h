@@ -9,6 +9,8 @@
 #include <QRectF>
 #include <QColor>
 #include <QString>
+#include <QTextStream>
+#include <QFile>
 namespace Ui {
 class MainWindow;
 }
@@ -32,9 +34,14 @@ private slots:
     void on_Start_button_clicked();
     void on_getCar_clicked();
     void on_Run_clicked();
+    void on_save_clicked();
+
+    void on_load_clicked();
+
 private:
     Ui::MainWindow *ui;
     graph map;
+    graph TempMap;
     QPixmap pixmap;
     //string Start;
     //string Des;

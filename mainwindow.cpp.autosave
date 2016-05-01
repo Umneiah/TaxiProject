@@ -513,7 +513,6 @@ void MainWindow::on_load_clicked()
          QString line = in.readLine();
          string c =line.toLocal8Bit().constData(); //convert Qstring to string
            map.AddCarList(c);
-
      }
     DrawCar();
 }
