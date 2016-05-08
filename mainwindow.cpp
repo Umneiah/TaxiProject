@@ -417,7 +417,7 @@ void MainWindow::on_AddCars_button_clicked()
     meh.clear();
     heh.clear();
     map.SetCarList(temppp);
-    bool Warning;
+    bool Warning = false;
     pixmap.load(QString::fromUtf8(":images/map.jpg"));
     ui->MapLbl->setPixmap(pixmap);
     ui->MapLbl->show();
