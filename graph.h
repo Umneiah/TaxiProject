@@ -7,6 +7,8 @@
 #include <algorithm>
 #include <limits>
 #include <list>
+#include <QStringList>
+#include <QString>
 
 using namespace std;
 
@@ -136,17 +138,6 @@ vector<edge>& getAdjNodeList()
 
 //displays all adjacent verticies of this vertex
 
-/*
-void displayList()
-{
-   string edgeOp = " -> " ;
-   for(int i=0 ; i < adjNodeList.size() ; i++)
-   {
-       Edge edg = adjNodeList[i];
-       cout << name << " -> " << edg.getDstNode()->getName() << endl ;
-   }
-}
-*/
 };
 
 //An object of class graph holds a directed graph
@@ -168,7 +159,7 @@ void addNewNode(node *nNode)
 }
 node* findNodeByName(string name)
 {
-   for(int i = 0 ; i < nodeList.size() ; i++)
+   for(unsigned i = 0 ; i < nodeList.size() ; i++)
    {
        if(nodeList[i]->getName() == name)
        return nodeList[i];
@@ -186,7 +177,7 @@ void SetCarList(list<node*> ay)
 }
 void clearVisited()
 {
-   for(int i = 0; i < nodeList.size() && !foundCycle ; i++)
+   for(unsigned i = 0; i < nodeList.size() && !foundCycle ; i++)
    {
        nodeList[i]->setStatus(NOT_VISITED);
    }
@@ -204,21 +195,38 @@ graph()
 ~graph()
 {
    //free mem allocated to verticies
-   for(int i=0 ; i < nodeList.size() ; i++)
+   for(unsigned i=0 ; i < nodeList.size() ; i++)
        delete nodeList[i];
    nodeList.clear();
 }
-
-
-/*
-void displayGraph()
+QStringList GetLocations()
 {
-   for(int i=0 ; i < nodeList.size() ; i++)
-   {
-       nodeList[i]->displayList();
-   }
+    QStringList res;
+    vector<node*>::iterator i ;
+    for(i = nodeList.begin() ; i != nodeList.end() ; ++i)
+    {
+        QString qstr = QString::fromStdString((*i)->getName());
+        res << qstr;
+    }
+    return res;
 }
-*/
+ QString GetCarNames()
+ {
+     QString res;
+     list<node*>::iterator i ;
+     int size = CarList.size();
+     int indi = 0;
+     for(i = CarList.begin() ; i != CarList.end() ; ++i)
+     {
+         indi++;
+         QString qstr = QString::fromStdString((*i)->getName());
+         res += qstr;
+         if (indi != size)
+             res += "\n";
+
+     }
+     return res;
+ }
 
 list<node*>::iterator findMin( list<node*>::iterator first, list<node*>::iterator last )
 {
@@ -234,46 +242,12 @@ void CarMovement(node * original,node * desired)
 {
     for(list<node*>::iterator i = CarList.begin();i!=CarList.end();i++)
     {
-        node * test = *i;
         if((*i) == original)
             i = CarList.erase(i);
     }
     CarList.push_back(desired);
 }
 
-/*
-void createGraph()
-{
-   unsigned numOfCities, numOfFlights;
-   //read in number of cities(TODO:in current implementation..not reqd), number of edges
-   cin >> numOfCities >> numOfFlights;
-   while(numOfFlights--)
-   {
-       string fromCity, toCity;
-       unsigned cost;
-
-       cin >> fromCity >> toCity >> cost;
-       //find if a vertex for the city already exists, if so get that
-       node *u = findNodeByName(fromCity);
-       if(u == NULL)
-       {
-           u = new node(fromCity);
-           addNewNode(u);
-       }
-
-       //find if a vertex for the city already exists, if so get that
-       node *v = findNodeByName(toCity);
-       if(v == NULL)
-       {
-           v = new node(toCity);
-           addNewNode(v);
-       }
-
-       u->addAdjNode(v,cost);
-       v->addAdjNode(u,cost);
-   }
-}
-*/
 list<node*> oneSourceAllDestination(string src)
 {
    list<node*> unvisited(nodeList.begin(),nodeList.end());
@@ -281,7 +255,7 @@ list<node*> oneSourceAllDestination(string src)
 
    unsigned INF = numeric_limits<unsigned>::max();
 
-   for (int i = 0; i < nodeList.size(); i++)
+   for (unsigned i = 0; i < nodeList.size(); i++)
    {
        if(src == nodeList[i]->getName())
        {
@@ -300,7 +274,7 @@ list<node*> oneSourceAllDestination(string src)
        {
            min->setPrevious(NULL);
        }
-       for (int i = 0; i < min->getAdjNodeList().size(); i++)
+       for (unsigned i = 0; i < min->getAdjNodeList().size(); i++)
        {
            if (min->getAdjNodeList()[i].getDstNode()->getStatus() == NOT_VISITED)
            {
@@ -344,7 +318,9 @@ list<node*> Destination(string dst,list<node*> shortestPaths)
            return shortestPath;
        }
    }
+   return shortestPath;
 }
+
 vector<node *>getVec()
 {
    return nodeList;

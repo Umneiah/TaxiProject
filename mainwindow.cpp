@@ -8,10 +8,12 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
     initial();
-    list<node*> tr = map.Destination("55",map.oneSourceAllDestination("22"));
-    map.clearVisited();
     pixmap.load(QString::fromUtf8(":images/map.jpg"));//path of image
     ui->MapLbl->setPixmap(pixmap);
+    ui->Run->setEnabled(false);
+    QStringList itemsList=map.GetLocations();
+    ui->StartCombo->addItems(itemsList);
+    ui->EndCombo->addItems(itemsList);
     ui->MapLbl->show();
 }
 void MainWindow::DrawCar()
@@ -59,17 +61,6 @@ void MainWindow::DrawTextt(vector<node*> nodeList)
      }
      ui->MapLbl->setPixmap(pixmap);
      ui->MapLbl->show();
-}
-void MainWindow::trial()
-{
-    map.AddCarList("45");
-    map.AddCarList("58");
-    map.AddCarList("36");
-    map.AddCarList("2");
-    map.AddCarList("7");
-    DrawCar();
-    list<node*> hah = map.NearestCar("20");
-    DrawPath(hah,0);
 }
 void MainWindow::DrawPath(list<node *> path,int choose)
 {
@@ -426,6 +417,7 @@ void MainWindow::on_AddCars_button_clicked()
     meh.clear();
     heh.clear();
     map.SetCarList(temppp);
+    bool Warning;
     pixmap.load(QString::fromUtf8(":images/map.jpg"));
     ui->MapLbl->setPixmap(pixmap);
     ui->MapLbl->show();
@@ -441,18 +433,30 @@ void MainWindow::on_AddCars_button_clicked()
     {
         for(QStringList :: iterator i = list_of_locations.begin() ; i != list_of_locations.end() ; i++)
         {
+            if(i->toInt() <0 || i->toInt() > 58 )
+            {
+                Warning = true;
+                break;
+            }
             if((*i)=="") break;
             string current_location =(*i).toLocal8Bit().constData(); //convert Qstring to string
             map.AddCarList(current_location);
         }
-    }    
-    DrawCar();
+    }
+    if(Warning)
+    {
+        QMessageBox messageBox;
+        messageBox.critical(0,"Error","Car Locations are out of range!");
+        messageBox.setFixedSize(0,0);
+    }
+    else DrawCar();
 }
 void MainWindow::on_Start_button_clicked()
 {
-      QString start_location = ui->Start_text->QLineEdit::text();
+      on_AddCars_button_clicked();
+      QString start_location = ui->StartCombo->currentText();
       string start =start_location.toLocal8Bit().constData(); //convert Qstring to string
-      QString End_location = ui->End_text->QLineEdit::text();
+      QString End_location = ui->EndCombo->currentText();
       string end = End_location.toLocal8Bit().constData(); //convert Qstring to string
       if (start.length() != 0 || end.length() != 0)
       {
@@ -482,7 +486,7 @@ void MainWindow::on_getCar_clicked()
    }
    else
    {
-       QString start_location = ui->Start_text->QLineEdit::text();
+       QString start_location = ui->StartCombo->currentText();
        string start =start_location.toLocal8Bit().constData(); //convert Qstring to string
        node * ori = heh.back();
        map.CarMovement(ori,map.findNodeByName(start));
@@ -493,14 +497,17 @@ void MainWindow::on_getCar_clicked()
        DrawPath(heh,0);
        DrawLocation(start1 , "Start");
        DrawLocation(end1 , "End");
-
+       QString sss = map.GetCarNames();
+       ui->CarLocation_text->setPlainText(map.GetCarNames());
+       ui->Run->setEnabled(true);
    }
+
 }
 void MainWindow::on_Run_clicked()
 {
-    QString start_location = ui->Start_text->QLineEdit::text();
+    QString start_location = ui->StartCombo->currentText();
     string start =start_location.toLocal8Bit().constData();
-    QString End_location = ui->End_text->QLineEdit::text();
+    QString End_location = ui->EndCombo->currentText();
     string end = End_location.toLocal8Bit().constData(); //convert Qstring to string
     map.CarMovement(map.findNodeByName(start),map.findNodeByName(end));
     pixmap.load(QString::fromUtf8(":images/map.jpg"));
@@ -511,6 +518,7 @@ void MainWindow::on_Run_clicked()
     DrawLocation(start1 , "Start");
     DrawLocation(end1 , "End");
     DrawPath(meh,1);
+    ui->CarLocation_text->setPlainText(map.GetCarNames());
     QString og = QString::number(map.GetPathLength(meh));
     QString og1 = QString::number(map.GetPathLength(meh)*2.5/10);
     ui->ogra->setText("Path length = "+og +" m"+"\n"+"Cost = "+og1+" LE");

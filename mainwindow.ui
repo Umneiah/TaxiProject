@@ -63,7 +63,7 @@
         <x>780</x>
         <y>410</y>
         <width>161</width>
-        <height>161</height>
+        <height>141</height>
        </rect>
       </property>
       <property name="styleSheet">
@@ -81,7 +81,7 @@
          <x>10</x>
          <y>70</y>
          <width>31</width>
-         <height>16</height>
+         <height>21</height>
         </rect>
        </property>
        <property name="font">
@@ -91,23 +91,6 @@
        </property>
        <property name="text">
         <string>End:</string>
-       </property>
-      </widget>
-      <widget class="QLineEdit" name="Start_text">
-       <property name="geometry">
-        <rect>
-         <x>50</x>
-         <y>40</y>
-         <width>91</width>
-         <height>21</height>
-        </rect>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">QLineEdit:hover
-{
-    border: 1px solid #78879b;
-    color: black;
-}</string>
        </property>
       </widget>
       <widget class="QLabel" name="label_3">
@@ -132,7 +115,7 @@
        <property name="geometry">
         <rect>
          <x>10</x>
-         <y>110</y>
+         <y>100</y>
          <width>131</width>
          <height>26</height>
         </rect>
@@ -186,21 +169,24 @@ QPushButton:hover
         <string>Set  Locations</string>
        </property>
       </widget>
-      <widget class="QLineEdit" name="End_text">
+      <widget class="QComboBox" name="StartCombo">
+       <property name="geometry">
+        <rect>
+         <x>50</x>
+         <y>30</y>
+         <width>85</width>
+         <height>27</height>
+        </rect>
+       </property>
+      </widget>
+      <widget class="QComboBox" name="EndCombo">
        <property name="geometry">
         <rect>
          <x>50</x>
          <y>70</y>
-         <width>91</width>
-         <height>21</height>
+         <width>85</width>
+         <height>27</height>
         </rect>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">QLineEdit:hover
-{
-    border: 1px solid #78879b;
-    color: black;
-}</string>
        </property>
       </widget>
      </widget>
@@ -308,7 +294,7 @@ QPushButton:hover
       <property name="geometry">
        <rect>
         <x>780</x>
-        <y>120</y>
+        <y>10</y>
         <width>161</width>
         <height>91</height>
        </rect>
@@ -385,7 +371,7 @@ QPushButton:hover
       <property name="geometry">
        <rect>
         <x>800</x>
-        <y>580</y>
+        <y>560</y>
         <width>120</width>
         <height>111</height>
        </rect>
@@ -520,7 +506,7 @@ QPushButton:hover
       <property name="geometry">
        <rect>
         <x>780</x>
-        <y>700</y>
+        <y>680</y>
         <width>161</width>
         <height>111</height>
        </rect>
@@ -558,7 +544,7 @@ QPushButton:hover
       <property name="geometry">
        <rect>
         <x>780</x>
-        <y>9</y>
+        <y>110</y>
         <width>161</width>
         <height>101</height>
        </rect>

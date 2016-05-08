@@ -26,7 +26,6 @@ public:
     void DrawPath(list<node *>path, int choose);
     void DrawCar();
     void DrawTextt(vector<node *> nodeList);
-    void trial();
     void DrawLocation(node* n, QString s);
 private slots:
     void on_ShowAll_button_clicked();
@@ -43,8 +42,6 @@ private:
     graph map;
     graph TempMap;
     QPixmap pixmap;
-    //string Start;
-    //string Des;
     list<node*> meh;
     list<node*> heh;
     node* start1;
